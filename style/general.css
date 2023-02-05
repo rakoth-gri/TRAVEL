@@ -1,0 +1,189 @@
+*,
+*::after,
+*::before {
+	padding: 0px;
+	margin: 0px;
+	box-sizing: border-box;
+}
+
+:root {
+	/* typograthy */
+	--app-basic-font: "Aleo";
+	--app-headers-font: "RedHatText";
+	--app-logo-font: "Magra", sans-serif;
+
+	--app-small-fs: 1rem;
+	--app-medium-fs: 1.5rem;
+	--app-large-fs: 2rem;
+
+	--app-regular-weight: 400;
+	--app-bold-weight: 700;
+
+	/* colors */
+	--app-basic-color: #f2785c;
+	--app-text-color: #0d606f;
+	--app-light-color: #ffffff;
+
+	/* bgs... */
+	--app-btn-bg: #0d606f;
+	--app-container-bg: #e5e5e5;
+
+	/* borderRadius ..... */
+	--app-btn-radius: 10px;
+	--app-img-radius: 1rem;
+
+	/* position */
+	--app-container-pos: 1rem auto;
+
+	/* margins */
+	--app-mr-small: 0.5rem;
+	--app-mr-medium: 1rem;
+	--app-mr-large: 1.5rem;
+
+	--app-box-shadow-param: 0px 0px 3px rgba(13, 96, 111, 0.08), 0px 2px 3px rgba(13, 96, 111, 0.16);
+}
+
+body {
+	font-family: var(--app-basic-font), serif;
+	font-weight: var(--app-regular-weight);
+}
+
+/* главный контейнер */
+.container {
+	width: 77%;
+	margin: var(--app-container-pos);
+	background-color: var(--app-container-bg);
+}
+
+/* элементы */
+
+ul {
+	list-style-type: none;
+	list-style-position: inside;
+}
+
+button {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px 32px;
+	width: 228px;
+	height: 59px;
+	outline: none;
+	border: none;
+	background: var(--app-btn-bg);
+	box-shadow: var(--app-box-shadow-param);
+	border-radius: var(--app-btn-radius);
+}
+
+a,
+button {
+	color: var(--app-light-color);
+	text-transform: capitalize;
+	font-weight: var(--app-regular-weight);
+	text-decoration: none;
+	font-size: var(--app-medium-fs);
+	font-family: var(--app-headers-font), serif;
+}
+
+p {
+	color: var(--app-text-color);
+	font-size: 20px;
+	line-height: 24px;
+}
+
+/* модификатор кнопки */
+.more::before {
+	content: "";
+	display: inline-block;
+	width: 35px;
+	height: 22.5px;
+	background-image: url("../icons/Arrow.svg");
+}
+
+.header__btn {
+	justify-content: center;
+	width: 103px;
+	height: 41px;
+}
+
+img {
+	display: block;
+	border-radius: var(--app-img-radius);
+}
+
+h2 {
+	font-size: 2.5rem;
+	color: var(--app-basic-color);
+	text-transform: uppercase;
+	font-family: var(--app-headers-font), serif;
+	text-align: center;
+	font-weight: 700;
+}
+
+h3 {
+	font-family: var(--app-basic-font);
+	font-weight: 400;
+	font-size: 35px;
+	color: var(--app-text-color);
+	margin-bottom: 1.5rem;
+}
+
+figcaption {
+	font-family: var(--app-basic-font);
+	font-weight: var(--app-regular-weight);
+	font-size: 20px;
+	color: var(--app-text-color);
+	text-align: center;
+}
+
+strong {
+	text-transform: uppercase;
+	font-size: var(--app-large-fs);
+	color: var(--app-light-color);
+	font-family: var(--app-headers-font);
+	position: absolute;
+	left: 7.5%;
+	bottom: 5%;
+	z-index: 2;
+}
+
+/* flex-контенер в шапке */
+.header__flex__panel {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	height: 100px;
+	background: rgba(242, 120, 92, 0.7);
+	box-shadow: 0px 4px 4px rgba(13, 96, 111, 0.5);
+	z-index: 2;
+}
+
+/* точки управления слайдера */
+.slider__controls {
+	width: 25px;
+	height: 25px;
+	border-radius: 50%;
+	display: inline-block;
+	margin: var(--app-mr-small);
+	background-color: var(--app-basic-color);
+}
+
+/* Бургерная кнопка ***********************/
+.burger {
+	font-size: 30px;
+	color: var(--app-container-bg);
+	position: absolute;
+	top: 8%;
+	right: 5%;
+	display: none;
+}
+
+/* контейнер кнопки в секция popular и stories */
+.container__button button {
+	margin: 0px;
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
+}
