@@ -48,14 +48,8 @@ body {
 	font-weight: var(--app-regular-weight);
 }
 
-/* главный контейнер */
-.container {
-	width: 77%;
-	margin: var(--app-container-pos);
-	background-color: var(--app-container-bg);
-}
 
-/* элементы */
+/*  стилизованные теги для наследования */
 
 ul {
 	list-style-type: none;
@@ -92,21 +86,6 @@ p {
 	line-height: 24px;
 }
 
-/* модификатор кнопки */
-.more::before {
-	content: "";
-	display: inline-block;
-	width: 35px;
-	height: 22.5px;
-	background-image: url("../icons/Arrow.svg");
-}
-
-.header__btn {
-	justify-content: center;
-	width: 103px;
-	height: 41px;
-}
-
 img {
 	display: block;
 	border-radius: var(--app-img-radius);
@@ -140,12 +119,36 @@ figcaption {
 strong {
 	text-transform: uppercase;
 	font-size: var(--app-large-fs);
-	color: var(--app-light-color);
+	color: var(--app-basic-color);
 	font-family: var(--app-headers-font);
 	position: absolute;
 	left: 7.5%;
 	bottom: 5%;
 	z-index: 2;
+}
+
+/* Классы *********************************************/
+
+/* главный контейнер */
+.container {
+	width: 77%;
+	margin: var(--app-container-pos);
+	background-color: var(--app-container-bg);
+}
+
+/* модификатор кнопки со стрелкой */
+.more::before {
+	content: "";
+	display: inline-block;
+	width: 35px;
+	height: 22.5px;
+	background-image: url("../icons/Arrow.svg");
+}
+
+.header__btn {
+	justify-content: center;
+	width: 103px;
+	height: 41px;
 }
 
 /* flex-контенер в шапке */
@@ -170,6 +173,12 @@ strong {
 	background-color: var(--app-basic-color);
 }
 
+/* класс активной slider dot */
+.slider__controls.active {
+	transform: scale(1.2);
+	background-color: rgb(59, 52, 52);
+}
+
 /* Бургерная кнопка ***********************/
 .burger {
 	font-size: 30px;
@@ -187,3 +196,5 @@ strong {
 	left: 50%;
 	transform: translateX(-50%);
 }
+
+

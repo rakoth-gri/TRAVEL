@@ -3,14 +3,16 @@ import { slideList } from "./../constants/data.js";
 
 class Slider {
 	constructor(slider, tracker, controls, slideList) {
+		// dom
 		this.tracker = tracker;
 		this.controls = controls;
 		this.slideList = slideList;
 		this.slider = slider;
-		// счетчик
+		// логика:
 		this.count = 0;
 		this.width = null;
-		// процедуры
+		this.interval = null;
+		// методы:
 		this.renderSlides(this.slideList);
 		this.renderDotes(this.slideList);
 		this.cssProps(this.slideList);
@@ -51,42 +53,59 @@ class Slider {
 		this.tracker.style.width = `${list.length * this.width}px`;
 	}
 
-	addEventToSlider(controls) {
+	addEventToSlider() {
 		this.slider.addEventListener("click", this.changeCount);
 	}
 
-	changeCount = (e) => {
-		if (!(e.target.matches(".slider__controls") || e.target.matches(".arrows"))) {
-			return;
-		}
+	changeCount = ({ target }) => {
+		// проверка
+		if (!(target.matches(".slider__controls") || target.matches(".arrows"))) return;
 
 		switch (true) {
-			case e.target.matches(".slider__controls"):
-				this.count = +e.target.id;
+			case target.matches(".slider__controls"):
+				this.count = +target.id;
+				this.checkCount(this.count);
+				break;
+			case target.id === "forward":
+				this.Increment();
 				break;
 			default:
-				e.target.id === "forward" ? this.count++ : this.count--;
+				this.Decrement();
 				break;
 		}
 
-		console.log(this.count);
-		
-
-		this.checkCount(this.count);		
-		
+		this.checkCount(this.count);
 	};
 
+	Increment() {
+		this.count++;
+		this.checkCount(this.count);
+	}
+
+	Decrement() {
+		this.count--;
+		this.checkCount(this.count);
+	}
+
 	checkCount(count) {
-		if(count >= this.slideList.length) this.count = 0;
-		if(count < 0) this.count = this.slideList.length - 1;
+		if (count >= this.slideList.length) this.count = 0;
+		if (count < 0) this.count = this.slideList.length - 1;
 		this.changeSlide(this.count);
+		this.showActiveDot(this.count);
 	}
 
 	changeSlide(count) {
 		this.tracker.style.transform = `translateX(-${count * this.width}px)`;
 	}
 
-	// autoSlider() {}
+	showActiveDot(index) {
+		[...this.controls.children].forEach((dot) => dot.classList.remove("active"));
+		[...this.controls.children][index].classList.add("active");
+	}
+
+	autoSlider() {
+		this.interval = setInterval(() => this.Increment(), 2000);
+	}
 }
 
 export default new Slider(sliderContainer, sliderTracker, sliderDotes, slideList);

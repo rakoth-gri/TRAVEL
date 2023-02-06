@@ -138,6 +138,7 @@
 	left: 6%;
 }
 
+/* под любые размеры фото */
 .popular__slider__tracker__img {
 	margin: 0 auto;
 	width: 90%;
@@ -151,6 +152,7 @@
 	text-align: center;
 	cursor: pointer;
 }
+
 
 /* Секция stories *************************************************/
 
@@ -183,7 +185,7 @@
 	padding: 2.77% 8.68% 4.5% 10.44%;
 }
 
-/* флекс под все экраны *********/
+/* flex под все экраны ******************/
 
 .stories__content__img {
 	flex: 1 1 auto;
@@ -226,7 +228,7 @@
 
 .footer__icons {
 	position: absolute;
-	right: 123px;
+	right: 10.79%;
 }
 
 .footer__icons a {
