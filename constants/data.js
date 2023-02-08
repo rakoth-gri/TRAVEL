@@ -1,4 +1,4 @@
-export const slideList = [
+const slideList = [
 	{
 		title: "japan",
 		src: "./img/Japan.png",
@@ -20,3 +20,9 @@ export const slideList = [
 		src: "./img/Greece.jpg",
 	},
 ];
+
+// config slider
+export const config = {
+	slideList,
+	selector: ".popular__slider", 
+}

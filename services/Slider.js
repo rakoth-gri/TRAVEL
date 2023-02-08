@@ -1,17 +1,14 @@
-import { sliderTracker, sliderDotes, sliderContainer } from "./../constants/dom.js";
-import { slideList } from "./../constants/data.js";
-
-class Slider {
-	constructor(slider, tracker, controls, slideList) {
+export default class Slider {
+	constructor({ selector, slideList }) {
 		// dom
-		this.tracker = tracker;
-		this.controls = controls;
+		this.slider = document.querySelector(selector);
+		this.tracker = this.slider.querySelector(".popular__slider__tracker");
+		this.controls = this.slider.querySelector(".slider__dotes");
 		this.slideList = slideList;
-		this.slider = slider;
 		// логика:
 		this.count = 0;
-		this.width = null;
 		this.interval = null;
+		this.currentWidth = null;
 		// методы:
 		this.renderSlides(this.slideList);
 		this.renderDotes(this.slideList);
@@ -45,12 +42,12 @@ class Slider {
 		);
 	}
 
-	cssProps(list) {
-		this.width = this.slider.offsetWidth;
+	cssProps() {
+		this.currentWidth = this.slider.offsetWidth;
 		for (let item of this.tracker.querySelectorAll(".popular__slider__tracker__item")) {
-			item.style.width = `${this.width}px`;
+			item.style.width = `${this.currentWidth}px`;
 		}
-		this.tracker.style.width = `${list.length * this.width}px`;
+		this.tracker.style.width = `${this.slideList.length * this.currentWidth}px`;
 	}
 
 	addEventToSlider() {
@@ -73,7 +70,6 @@ class Slider {
 				this.Decrement();
 				break;
 		}
-
 		this.checkCount(this.count);
 	};
 
@@ -95,7 +91,7 @@ class Slider {
 	}
 
 	changeSlide(count) {
-		this.tracker.style.transform = `translateX(-${count * this.width}px)`;
+		this.tracker.style.transform = `translateX(-${count * this.currentWidth}px)`;
 	}
 
 	showActiveDot(index) {
@@ -107,5 +103,3 @@ class Slider {
 		this.interval = setInterval(() => this.Increment(), 2000);
 	}
 }
-
-export default new Slider(sliderContainer, sliderTracker, sliderDotes, slideList);
